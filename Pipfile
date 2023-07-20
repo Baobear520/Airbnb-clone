@@ -5,8 +5,11 @@ name = "pypi"
 
 [packages]
 django = "==2.2.5"
+flake8 = "*"
 
 [dev-packages]
+black = "*"
+pre = "*"
 
 [requires]
 python_version = "3.11"

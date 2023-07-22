@@ -15,3 +15,9 @@ class RoomAdmin(admin.ModelAdmin):
 
     """ Room admin class """
     pass
+
+@admin.register(models.Photo)
+class PhotoAdmin(admin.ModelAdmin):
+
+    """ """
+    pass

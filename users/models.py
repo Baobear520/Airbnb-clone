@@ -46,6 +46,8 @@ class User(AbstractUser):
     )
     currency = models.CharField(
         choices=CURRENCY_CHOICES, 
-        max_length=3, default="USD", null=True
+        max_length=3, 
+        default="USD", 
+        null=True
     )
     superhost = models.BooleanField(default=False)

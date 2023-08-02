@@ -1,7 +1,9 @@
 from django.db import models
+from django.utils import timezone
 from core import models as core_models
 # Create your models here.
 
+    
 
 class Reservation(core_models.TimeStampedModel):
 
@@ -10,13 +12,11 @@ class Reservation(core_models.TimeStampedModel):
     STATUS_PENDING = 'Pending'
     STATUS_CONFIRMED = 'Confirmed'
     STATUS_CANCELLED = 'Cancelled'
-    STATUS_USED = 'Used'
 
     STATUS_CHOICES = (
         (STATUS_PENDING, "Pending"),
         (STATUS_CONFIRMED, "Confirmed"),
         (STATUS_CANCELLED, "Cancelled"),
-        (STATUS_USED, "Used")
     )
 
     status = models.CharField(
@@ -33,3 +33,19 @@ class Reservation(core_models.TimeStampedModel):
         return f'{self.room} - {self.check_in}'
     
     
+    def stay_status(self):
+        today = timezone.now().date()
+        
+        check_in = self.check_in
+        check_out = self.check_out
+        print(today - check_in)
+        if today > check_out:
+            return 'Completed'
+        elif today == check_out:
+            return 'Check-out day'
+        elif today > check_in:
+            return 'In progress'
+        elif check_in == today:
+            return 'Almost time!'
+        else:
+            return 'To be checked-in'

@@ -8,7 +8,8 @@ class ConversationAdmin(admin.ModelAdmin):
 
     """ Conversation admin definition """
 
-    pass 
+    list_display = ('__str__', 'count_participants', 'count_messages')
+    filter_horizontal = ('participants',) 
  
 
 
@@ -17,4 +18,4 @@ class MessageAdmin(admin.ModelAdmin):
 
     """ Conversation admin definition """
 
-    pass
+    list_display = ('__str__', 'created')

@@ -6,6 +6,7 @@ from core import models as core_models
 
 
 class AbstractItem(core_models.TimeStampedModel):
+    
     """ Abstract item """
 
     name = models.CharField(max_length=80)
@@ -18,7 +19,6 @@ class AbstractItem(core_models.TimeStampedModel):
 
 
 class RoomType(AbstractItem):
-    
     """ Room type """
     
     class Meta:
@@ -102,4 +102,4 @@ class Room(core_models.TimeStampedModel):
                 all_ratings += review.rating_average()
             return round(all_ratings / len(all_reviews), 2)
         else:
-            return 0
+            return all_ratings

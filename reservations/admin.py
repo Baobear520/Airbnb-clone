@@ -1,5 +1,3 @@
-from typing import Any, List, Optional, Tuple
-from datetime import timedelta
 from django.contrib import admin
 from django.utils import timezone
 
@@ -35,11 +33,7 @@ class StayStatusFilter(admin.SimpleListFilter):
         elif self.value() == 'completed':
             return queryset.filter(check_out__lt=timezone.now().date())
         elif self.value() == 'check_out_day':
-            return queryset.filter(check_out=timezone.now().date())
-
-            
-
-        
+            return queryset.filter(check_out=timezone.now().date())    
 
 @admin.register(models.Reservation)
 class RegistrationAdmin(admin.ModelAdmin):

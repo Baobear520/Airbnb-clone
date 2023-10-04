@@ -38,7 +38,6 @@ class Reservation(core_models.TimeStampedModel):
         
         check_in = self.check_in
         check_out = self.check_out
-        print(today - check_in)
         if today > check_out:
             return 'Completed'
         elif today == check_out:
@@ -46,6 +45,6 @@ class Reservation(core_models.TimeStampedModel):
         elif today > check_in:
             return 'In progress'
         elif check_in == today:
-            return 'Almost time!'
+            return 'Time to check-in!'
         else:
             return 'To be checked-in'

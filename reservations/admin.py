@@ -14,7 +14,7 @@ class StayStatusFilter(admin.SimpleListFilter):
         return (
             ('in_progress', _('In Progress')),
             ('to_be_checked_in', _('To Be Checked-In')),
-            ('almost_time', _('Almost Time!')),
+            ('time_to_check-in', _('Time to Check-in!')),
             ('completed', _('Completed')),
             ('check_out_day',_('Check-out day'))
         )
@@ -27,7 +27,7 @@ class StayStatusFilter(admin.SimpleListFilter):
             )
         elif self.value() == 'to_be_checked_in':
             return queryset.filter(check_in__gt=timezone.now().date())
-        elif self.value() == 'almost_time':
+        elif self.value() == 'time_to_check-in':
             return queryset.filter(
                 check_in=timezone.now().date())
         elif self.value() == 'completed':
@@ -42,6 +42,7 @@ class RegistrationAdmin(admin.ModelAdmin):
 
     list_display = (
         'room',
+        'status',
         'check_in',
         'check_out',
         'guest',

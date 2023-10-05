@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 
+{% block page_name %}
+Home
+{% endblock %}
+
 {% block content %}
 {% for room in rooms %}
     <h3>{{room}}</h3>
 {% endfor %}
+
+<h5>Page {{page}} of {{page_count}}</h5>
+{% for page in page_range %}
+    <a href='/?page={{page}}'>{{page}}</a>
+{% endfor %}
+
+
 {% endblock %}
 
-{% block page_name %}
-Home
-{% endblock %}
+
 
 
 

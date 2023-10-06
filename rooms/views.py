@@ -11,6 +11,7 @@ def all_rooms(request):
     offset = limit - page_size
     all_rooms = models.Room.objects.all()[offset:limit]
     page_count = ceil(models.Room.objects.count() / page_size)
+
     return render(
         request,
         template_name="rooms/home.html",
@@ -18,6 +19,6 @@ def all_rooms(request):
             'rooms': all_rooms,
             'page': page,
             'page_count': page_count,
-            'page_range': range(1, page_count + 1) 
+            'page_range': range(1, page_count + 1),
         }
     )
